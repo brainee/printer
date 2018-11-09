@@ -30,18 +30,21 @@ function printer(obj, level = 2) {
         var middle = "="
         var keys = Object.keys(obj);
         var next=keys.map(function (subKey, currentColumn) {
+            var storeCurrentLevel=currentLevel;
             var subObj = obj[subKey];
             var pre2 = pre + (currentColumn<10?"0"+currentColumn:currentColumn) + "列:";
-            pre2=currentLevel>1?pre2+"["+(parentKey||"")+"]:":pre2;
-            if (subObj instanceof Object) {
-                if (currentLevel <= level) {
-                    console.log(pre2, subKey);
-                    return [++currentLevel, currentColumn, subObj, subKey];
+            pre2=storeCurrentLevel>1?pre2+"["+(parentKey||"")+"]:":pre2;
+            
+            if (subObj&&typeof(subObj)=="object") {
+                if (storeCurrentLevel <= level) {
+                    console.log(pre2,1, subKey, middle);
+                    return [++storeCurrentLevel, currentColumn, subObj, subKey];
                 } else {
-                    console.log(pre2, subKey, middle, Object.prototype.toString.call(subObj));
+                    console.log(pre2,2, subKey, middle, Object.prototype.toString.call(subObj));
                 }
             } else {
-                console.log(pre2, subKey, middle, subObj);
+
+                console.log(pre2,3,subKey, middle, subObj);
             }
         });
         printLevel(next);

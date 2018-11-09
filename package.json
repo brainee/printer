@@ -1,0 +1,19 @@
+{
+  "name": "printer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "printer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brainee/printer.git"
+  },
+  "author": "brainee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brainee/printer/issues"
+  },
+  "homepage": "https://github.com/brainee/printer#readme"
+}

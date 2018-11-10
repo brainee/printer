@@ -1,6 +1,6 @@
-
 function printer(obj, options) {
-    var showkeys = false, maxColumns = 10, maxLevel = 2;
+    console.log("\n------------开始打印：", getType(obj), "------------");
+    var showkeys = true, maxColumns = 10, maxLevel = 2;
     if (options) {
         showkeys = options.showKeys || showkeys;
         maxColumns = options.maxColumns || maxColumns;
@@ -12,7 +12,7 @@ function printer(obj, options) {
     function printLevel(next) {
         i++;
         if (i > maxLevel) {
-            console.log("打印超过最大级别数：", maxLevel);
+            console.log(getType(obj), "打印超过最大级别数：", maxLevel);
             return;
         }
         if (next && next.length) {
@@ -26,7 +26,8 @@ function printer(obj, options) {
         }
     }
     function printObj(obj, currentLevel, parentKey) {
-        if (!obj) {
+        if (!obj || typeof (obj) != "object") {
+            console.log("[error]输入参数不是对象，", getType(obj), obj);
             return;
         }
         var blank = new Array(currentLevel).join("    ");
